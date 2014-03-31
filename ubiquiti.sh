@@ -1,6 +1,7 @@
 #!/bin/bash
 # Ubiquiti UAP-PRO Wireless SSID Detection Script
 # Author: John McCarthy
+# Email: midactsmystery@gmail.com
 # <http://www.midactstech.blogspot.com> <https://www.github.com/Midacts>
 # Date: 31st of March, 2014
 # Version 1.0
