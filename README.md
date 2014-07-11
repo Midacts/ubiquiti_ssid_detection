@@ -2,11 +2,11 @@ This script is used to use your Ubiquiti access point to check for other access 
 
 * Copy this script to a Linux machine
 * Make this script executable
-`chmod +x ubiquiti.sh`
+> `chmod +x ubiquiti.sh`
 
-* Edit some settings- mainly the variables at the top of the script
-	# SSH Variables
-	  -------------
+* Edit variables
+	## SSH Variables
+	  ---------------
 	**user**
 	* Change to the username used to login to your Unifi AP
 
@@ -16,7 +16,7 @@ This script is used to use your Ubiquiti access point to check for other access 
 	**hostname**
 	* Change to the IP or FQDN of your Unifi AP
 
-	# Email Variables
+	## Email Variables
 	  ---------------
 	
 	**host**		
@@ -32,7 +32,7 @@ This script is used to use your Ubiquiti access point to check for other access 
 	**recipient**	
 	* Update this eamil address with the email addresses of the users/groups that you would like to receive these email alerts.
 	
-	# Variables to get list of scanned SSIDs form the Ubiquiti UAP-PRO
+	## Variables to get list of scanned SSIDs form the Ubiquiti UAP-PRO
 	  ----------------------------------------------------------------
 	* Put your known non-route AP's in single quotes here. Do not use commas, just use spaces, like the included example.
 
