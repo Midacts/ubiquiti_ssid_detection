@@ -10,28 +10,42 @@
 # To God only wise, be glory through Jesus Christ forever. Amen.
 # Romans 16:27, I Corinthians 15:1-4
 #---------------------------------------------------------------
-#
+#################
+# SSH Variables
+#################
+# Username used to login to Unifi AP
+user=admin
+# Unifi AP user's password
+password=""
+# IP or FQDN of Unifi AP
+hostname="192.168.1.1"
+
+###################
 # Email Variables
-#
+###################
 # Hostname of the AP
-host=$(sshpass -p "PASSWORD" ssh admin@HOST "hostname")
+host=
 # Email subject
 subject="ROGUE WIRELESS AP DETECTED ON $host"
 # Sender email
 sender="ubnt@domain.com"
 # Recipient email
 recipient="you're_email@domain.com"
-#
+
+############################
 # List of acceptable SSIDs
-#
+############################
+
 checklist=('List' 'of' 'known' 'or' 'acceptable' 'SSIDs')
-#
+
+####################################################################
 # Variables to get list of scanned SSIDs form the Ubiquiti UAP-PRO
-#
-mapfile -t ath0 < <(sshpass -p "PASSWORD" ssh admin@HOST 'iwlist ath0 scanning' | sed -n 's/^[[:blank:]]*ESSID:"\(.*\)"$/\1/p')
-mapfile -t ath1 < <(sshpass -p "PASSWORD" ssh admin@HOST 'iwlist ath1 scanning' | sed -n 's/^[[:blank:]]*ESSID:"\(.*\)"$/\1/p')
-mapfile -t ath2 < <(sshpass -p "PASSWORD" ssh admin@HOST 'iwlist ath2 scanning' | sed -n 's/^[[:blank:]]*ESSID:"\(.*\)"$/\1/p')
-mapfile -t ath3 < <(sshpass -p "PASSWORD" ssh admin@HOST 'iwlist ath3 scanning' | sed -n 's/^[[:blank:]]*ESSID:"\(.*\)"$/\1/p')
+####################################################################
+
+mapfile -t ath0 < <(sshpass -p "$password" ssh $user@$hostname 'iwlist ath0 scanning' | sed -n 's/^[[:blank:]]*ESSID:"\(.*\)"$/\1/p')
+mapfile -t ath1 < <(sshpass -p "$password" ssh $user@$hostname 'iwlist ath1 scanning' | sed -n 's/^[[:blank:]]*ESSID:"\(.*\)"$/\1/p')
+mapfile -t ath2 < <(sshpass -p "$password" ssh $user@$hostname 'iwlist ath2 scanning' | sed -n 's/^[[:blank:]]*ESSID:"\(.*\)"$/\1/p')
+mapfile -t ath3 < <(sshpass -p "$password" ssh $user@$hostname 'iwlist ath3 scanning' | sed -n 's/^[[:blank:]]*ESSID:"\(.*\)"$/\1/p')
 
 echo "ath0 equals ${ath0[@]}"
 for (( i=0; i<"${#ath0[@]}"; i++ ))
