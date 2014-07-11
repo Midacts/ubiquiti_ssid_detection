@@ -42,10 +42,10 @@ checklist=('List' 'of' 'known' 'or' 'acceptable' 'SSIDs')
 # Variables to get list of scanned SSIDs form the Ubiquiti UAP-PRO
 ####################################################################
 
-mapfile -t ath0 < <(sshpass -p "$password" ssh $user@$hostname 'iwlist ath0 scanning' | sed -n 's/^[[:blank:]]*ESSID:"\(.*\)"$/\1/p')
-mapfile -t ath1 < <(sshpass -p "$password" ssh $user@$hostname 'iwlist ath1 scanning' | sed -n 's/^[[:blank:]]*ESSID:"\(.*\)"$/\1/p')
-mapfile -t ath2 < <(sshpass -p "$password" ssh $user@$hostname 'iwlist ath2 scanning' | sed -n 's/^[[:blank:]]*ESSID:"\(.*\)"$/\1/p')
-mapfile -t ath3 < <(sshpass -p "$password" ssh $user@$hostname 'iwlist ath3 scanning' | sed -n 's/^[[:blank:]]*ESSID:"\(.*\)"$/\1/p')
+mapfile -t ath0 < <(sshpass -p "$password" ssh $user@$hostname 'iwlist ath0 scanning' | sed -n 's/^[[:blank:]]*ESSID:"\(.*\)"$/\1/p' | sed 's/^$/HIDDEN-SSID/')
+mapfile -t ath1 < <(sshpass -p "$password" ssh $user@$hostname 'iwlist ath1 scanning' | sed -n 's/^[[:blank:]]*ESSID:"\(.*\)"$/\1/p' | sed 's/^$/HIDDEN-SSID/')
+mapfile -t ath2 < <(sshpass -p "$password" ssh $user@$hostname 'iwlist ath2 scanning' | sed -n 's/^[[:blank:]]*ESSID:"\(.*\)"$/\1/p' | sed 's/^$/HIDDEN-SSID/')
+mapfile -t ath3 < <(sshpass -p "$password" ssh $user@$hostname 'iwlist ath3 scanning' | sed -n 's/^[[:blank:]]*ESSID:"\(.*\)"$/\1/p' | sed 's/^$/HIDDEN-SSID/')
 
 echo "ath0 equals ${ath0[@]}"
 for (( i=0; i<"${#ath0[@]}"; i++ ))
