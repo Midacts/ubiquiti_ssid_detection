@@ -1,5 +1,8 @@
 This script is used to use your Ubiquiti access point to check for other access points in it's area.
 
+### Tested with Unifi Firmware 2.4.6 and 3.2.1
+Detects broadcasted and **hidden** SSID's.
+
 * Copy this script to a Linux machine
 * Make this script executable
 > `chmod +x ubiquiti.sh`
